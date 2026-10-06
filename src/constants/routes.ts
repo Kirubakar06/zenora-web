@@ -1,0 +1,22 @@
+export const ROUTES = {
+  HOME: '/',
+  AUTH: {
+    LOGIN: '/login',
+    REGISTER: '/register',
+    FORGOT_PASSWORD: '/forgot-password',
+    RESET_PASSWORD: '/reset-password',
+  },
+  DASHBOARD: '/dashboard',
+  CONVERSATIONS: '/conversations',
+  CONVERSATION_DETAIL: '/conversations/:id',
+  TICKETS: '/tickets',
+  TICKET_DETAIL: '/tickets/:id',
+  CUSTOMERS: '/customers',
+  CUSTOMER_DETAIL: '/customers/:id',
+  AI_CONFIG: '/ai',
+  KNOWLEDGE_BASE: '/knowledge-base',
+  ANALYTICS: '/analytics',
+  BILLING: '/billing',
+  INTEGRATIONS: '/integrations',
+  SETTINGS: '/settings',
+} as const;

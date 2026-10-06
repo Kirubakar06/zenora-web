@@ -1,0 +1,36 @@
+import { UserRole } from '../../types/user';
+import { PERMISSIONS } from '../../constants/permissions';
+
+export const ROLE_PERMISSIONS: Record<UserRole, string[]> = {
+  owner: Object.values(PERMISSIONS),
+  admin: Object.values(PERMISSIONS).filter((p) => p !== PERMISSIONS.BILLING_MANAGE),
+  supervisor: [
+    PERMISSIONS.CONVERSATIONS_VIEW,
+    PERMISSIONS.CONVERSATIONS_REPLY,
+    PERMISSIONS.CONVERSATIONS_TRANSFER,
+    PERMISSIONS.CONVERSATIONS_RESOLVE,
+    PERMISSIONS.TICKETS_VIEW,
+    PERMISSIONS.TICKETS_CREATE,
+    PERMISSIONS.TICKETS_EDIT,
+    PERMISSIONS.TICKETS_ASSIGN,
+    PERMISSIONS.KNOWLEDGE_MANAGE,
+  ],
+  agent: [
+    PERMISSIONS.CONVERSATIONS_VIEW,
+    PERMISSIONS.CONVERSATIONS_REPLY,
+    PERMISSIONS.CONVERSATIONS_RESOLVE,
+    PERMISSIONS.TICKETS_VIEW,
+    PERMISSIONS.TICKETS_CREATE,
+    PERMISSIONS.TICKETS_EDIT,
+  ],
+  ai_trainer: [
+    PERMISSIONS.CONVERSATIONS_VIEW,
+    PERMISSIONS.AI_PROMPT_EDIT,
+    PERMISSIONS.AI_MODEL_SETTINGS,
+    PERMISSIONS.KNOWLEDGE_MANAGE,
+  ],
+};
+
+export function hasPermission(userPermissions: string[], permission: string): boolean {
+  return userPermissions.includes(permission);
+}
